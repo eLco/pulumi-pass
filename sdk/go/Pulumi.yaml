@@ -1,0 +1,3 @@
+name: pass
+description: A Pulumi resource provider for pass.
+language: go

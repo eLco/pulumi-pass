@@ -1,0 +1,26 @@
+{
+  "name": "@pulumi/pass",
+  "version": "0.0.1",
+  "description": "A Pulumi package for creating and managing pass/gopass secrets.",
+  "keywords": [
+    "pulumi",
+    "pass",
+    "gopass"
+  ],
+  "homepage": "https://pulumi.io",
+  "repository": "https://github.com/elco/pulumi-pass",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/mime": "^2.0.0",
+    "@types/node": "^8.0.25"
+  },
+  "pulumi": {
+    "resource": true
+  }
+}

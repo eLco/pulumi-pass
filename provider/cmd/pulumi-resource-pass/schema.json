@@ -1,0 +1,197 @@
+{
+    "name": "pass",
+    "description": "A Pulumi package for creating and managing pass secrets.",
+    "keywords": [
+        "pulumi",
+        "pass"
+    ],
+    "homepage": "https://pulumi.io",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`pass` Terraform Provider](https://github.com/terraform-providers/terraform-provider-pass).",
+    "repository": "https://github.com/elco/pulumi-pass",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "refreshStore": {
+                "type": "boolean",
+                "description": "Whether or not call `pass git pull`.\n",
+                "default": true
+            },
+            "storeDir": {
+                "type": "string",
+                "description": "Password storage directory to use.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "PASSWORD_STORE_DIR"
+                    ]
+                }
+            }
+        }
+    },
+    "provider": {
+        "description": "The provider type for the pass package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "inputProperties": {
+            "refreshStore": {
+                "type": "boolean",
+                "description": "Whether or not call `pass git pull`.\n",
+                "default": true
+            },
+            "storeDir": {
+                "type": "string",
+                "description": "Password storage directory to use.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "PASSWORD_STORE_DIR"
+                    ]
+                }
+            }
+        }
+    },
+    "resources": {
+        "pass:index/passPassword:PassPassword": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "additional secret data.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "secret password.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Full path where the pass data will be written.\n"
+                }
+            },
+            "required": [
+                "password",
+                "path"
+            ],
+            "inputProperties": {
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "additional secret data.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "secret password.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Full path where the pass data will be written.\n"
+                }
+            },
+            "requiredInputs": [
+                "password",
+                "path"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PassPassword resources.\n",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "additional secret data.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "secret password.\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "Full path where the pass data will be written.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "pass:index/getPassPassword:getPassPassword": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getPassPassword.\n",
+                "properties": {
+                    "path": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "path"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPassPassword.\n",
+                "properties": {
+                    "body": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "full": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "body",
+                    "data",
+                    "full",
+                    "password",
+                    "path",
+                    "id"
+                ]
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "2.*",
+                "System.Collections.Immutable": "1.6.0"
+            }
+        },
+        "nodejs": {
+            "dependencies": {
+                "@pulumi/pulumi": "^2.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^8.0.25"
+            },
+            "packageDescription": "A Pulumi package for creating and managing pass secrets.",
+            "packageName": "",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "requires": {
+                "pulumi": "\u003e=2.0.0,\u003c3.0.0"
+            }
+        }
+    }
+}
